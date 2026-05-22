@@ -6,7 +6,7 @@
 
 После пуша в `main` сайт публикуется автоматически:
 
-**https://balaNce.github.io/imposter/**
+**https://ВАШ_ЛОГИН.github.io/imposter/** (после пуша в GitHub)
 
 На GitHub Pages работает режим **«Одно устройство»**. Режим с нескольких устройств требует Node-сервера (`npm start`).
 
