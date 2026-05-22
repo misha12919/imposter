@@ -1,6 +1,7 @@
 import { pickRandomWord } from "./words.js";
 
 const app = document.getElementById("app");
+const ON_GH_PAGES = location.hostname.endsWith("github.io");
 
 const state = {
   screen: "home",
@@ -76,9 +77,9 @@ function renderHome() {
           <strong>Одно устройство</strong>
           <span>Передавайте телефон по кругу — слово видит только тот, кто нажал кнопку</span>
         </button>
-        <button type="button" class="mode-btn" data-mode="online">
+        <button type="button" class="mode-btn" data-mode="online" ${ON_GH_PAGES ? "disabled style='opacity:0.5;cursor:not-allowed'" : ""}>
           <strong>Несколько устройств</strong>
-          <span>Хост создаёт комнату, остальные подключаются по коду</span>
+          <span>${ON_GH_PAGES ? "Недоступно на GitHub Pages — нужен Node-сервер (npm start)" : "Хост создаёт комнату, остальные подключаются по коду"}</span>
         </button>
       </div>
       <div class="rules">
@@ -100,6 +101,7 @@ function renderHome() {
 
   app.querySelectorAll(".mode-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      if (btn.disabled) return;
       state.playerCount = clampPlayers(Number(countInput.value));
       state.mode = btn.dataset.mode;
       if (state.mode === "local") {
