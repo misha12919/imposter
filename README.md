@@ -6,7 +6,7 @@
 
 После пуша в `main` сайт публикуется автоматически:
 
-**https://ВАШ_ЛОГИН.github.io/imposter/** (после пуша в GitHub)
+**https://misha12919.github.io/imposter/**
 
 На GitHub Pages работает режим **«Одно устройство»**. Режим с нескольких устройств требует Node-сервера (`npm start`).
 
