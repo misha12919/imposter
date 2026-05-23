@@ -10,6 +10,9 @@
   --spy: #e85d5d;
   --spy-glow: rgba(232, 93, 93, 0.35);
   --success: #4ecb8a;
+  --warn: #e8c547;
+  --warn-bg: rgba(232, 197, 71, 0.18);
+  --success-bg: rgba(78, 203, 138, 0.18);
   --radius: 16px;
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
@@ -376,4 +379,128 @@ input[type="number"] {
 .rules ul {
   margin: 0;
   padding-left: 1.2em;
+}
+
+a.back-link {
+  text-decoration: none;
+}
+
+.code-input {
+  text-align: center;
+  letter-spacing: 0.35em;
+  font-size: 1.5rem !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.inline-green {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.inline-yellow {
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.guess-history-card {
+  margin-bottom: 16px;
+}
+
+.guess-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guess-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.guess-row:last-child {
+  border-bottom: none;
+}
+
+.guess-digits {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.guess-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.feedback-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+  max-width: 120px;
+}
+
+.fb-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fb-green {
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(78, 203, 138, 0.5);
+}
+
+.fb-yellow {
+  background: var(--warn);
+  box-shadow: 0 0 8px rgba(232, 197, 71, 0.45);
+}
+
+.feedback-counts {
+  display: flex;
+  gap: 6px;
+}
+
+.rules code {
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.feedback-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 10px;
+}
+
+.feedback-green {
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.feedback-yellow {
+  color: var(--warn);
+  background: var(--warn-bg);
+}
+
+.guess-legend {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
 }

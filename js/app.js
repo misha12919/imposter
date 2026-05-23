@@ -82,6 +82,10 @@ function renderHome() {
           <span>${ON_GH_PAGES ? "Недоступно на GitHub Pages — нужен Node-сервер (npm start)" : "Хост создаёт комнату, остальные подключаются по коду"}</span>
         </button>
       </div>
+      <a href="code.html" class="mode-btn" style="margin-top:20px;text-decoration:none;display:flex">
+        <strong>Игра «Код»</strong>
+        <span>Угадайте код — как Wordle: только количество подсказок</span>
+      </a>
       <div class="rules">
         <h3>Как играть</h3>
         <ul>
