@@ -440,39 +440,12 @@ a.back-link {
 
 .guess-feedback {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+  align-items: center;
 }
 
-.feedback-dots {
+.guess-feedback-pills {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 5px;
-  max-width: 120px;
-}
-
-.fb-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.fb-green {
-  background: var(--success);
-  box-shadow: 0 0 8px rgba(78, 203, 138, 0.5);
-}
-
-.fb-yellow {
-  background: var(--warn);
-  box-shadow: 0 0 8px rgba(232, 197, 71, 0.45);
-}
-
-.feedback-counts {
-  display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .rules code {
@@ -506,7 +479,29 @@ a.back-link {
 
 .guess-legend {
   margin: 12px 0 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  text-align: center;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.legend-row:last-child {
+  margin-bottom: 0;
+}
+
+.legend-row .feedback-pill {
+  flex-shrink: 0;
+  min-width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
+}
+
+.legend-row strong {
+  font-weight: 700;
 }

@@ -55,15 +55,11 @@ function scoreGuess(secret, guess) {
   return { greens, yellows };
 }
 
-function feedbackDots(greens, yellows) {
-  const parts = [];
-  for (let i = 0; i < greens; i++) {
-    parts.push('<span class="fb-dot fb-green" aria-hidden="true"></span>');
-  }
-  for (let i = 0; i < yellows; i++) {
-    parts.push('<span class="fb-dot fb-yellow" aria-hidden="true"></span>');
-  }
-  return `<span class="feedback-dots">${parts.join("")}</span>`;
+function feedbackPills(greens, yellows) {
+  return `<span class="guess-feedback-pills">
+    <span class="feedback-pill feedback-green" title="На месте">${greens}</span>
+    <span class="feedback-pill feedback-yellow" title="В коде, не на месте">${yellows}</span>
+  </span>`;
 }
 
 function feedbackLabel(greens, yellows) {
@@ -191,11 +187,7 @@ function renderGuessHistory() {
       <li class="guess-row">
         <span class="guess-digits" aria-label="Догадка">${escapeHtml(g.guess)}</span>
         <span class="guess-feedback" aria-label="${feedbackLabel(g.greens, g.yellows)}">
-          ${feedbackDots(g.greens, g.yellows)}
-          <span class="feedback-counts">
-            <span class="feedback-pill feedback-green">${g.greens}</span>
-            <span class="feedback-pill feedback-yellow">${g.yellows}</span>
-          </span>
+          ${feedbackPills(g.greens, g.yellows)}
         </span>
       </li>`
     )
@@ -205,10 +197,16 @@ function renderGuessHistory() {
     <div class="card guess-history-card">
       <p class="status-bar" style="margin:0 0 12px">Попытки</p>
       <ul class="guess-history">${rows}</ul>
-      <p class="guess-legend">
-        <span class="fb-dot fb-green"></span> / <span class="feedback-pill feedback-green">N</span> — цифра на своём месте &nbsp;
-        <span class="fb-dot fb-yellow"></span> / <span class="feedback-pill feedback-yellow">N</span> — цифра есть в коде, но не там
-      </p>
+      <div class="guess-legend">
+        <p class="legend-row">
+          <span class="feedback-pill feedback-green">3</span>
+          <span>— столько цифр <strong class="inline-green">на своём месте</strong></span>
+        </p>
+        <p class="legend-row">
+          <span class="feedback-pill feedback-yellow">1</span>
+          <span>— столько цифр <strong class="inline-yellow">в коде, но не там</strong></span>
+        </p>
+      </div>
     </div>
   `;
 }
