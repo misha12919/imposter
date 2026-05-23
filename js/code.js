@@ -1,3 +1,7 @@
+import { initGameNav } from "./nav.js";
+
+initGameNav("code");
+
 const app = document.getElementById("app");
 
 const DIGIT_STATE = {
@@ -161,7 +165,6 @@ function render() {
 function renderHome() {
   app.innerHTML = `
     <section class="screen">
-      <a href="index.html" class="back-link">← Шпион</a>
       <div class="logo">
         <h1>Код</h1>
         <p class="tagline">Угадай четырёхзначный код</p>

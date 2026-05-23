@@ -1,4 +1,7 @@
 import { pickRandomWord } from "./words.js";
+import { initGameNav } from "./nav.js";
+
+initGameNav("spy");
 
 const app = document.getElementById("app");
 const ON_GH_PAGES = location.hostname.endsWith("github.io");
@@ -82,10 +85,6 @@ function renderHome() {
           <span>${ON_GH_PAGES ? "Недоступно на GitHub Pages — нужен Node-сервер (npm start)" : "Хост создаёт комнату, остальные подключаются по коду"}</span>
         </button>
       </div>
-      <a href="code.html" class="mode-btn game-link">
-        <strong>Игра «Код»</strong>
-        <span>Угадайте код — как Wordle: только количество подсказок</span>
-      </a>
       <div class="rules">
         <h3>Как играть</h3>
         <ul>
