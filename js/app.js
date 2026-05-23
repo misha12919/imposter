@@ -82,7 +82,7 @@ function renderHome() {
           <span>${ON_GH_PAGES ? "Недоступно на GitHub Pages — нужен Node-сервер (npm start)" : "Хост создаёт комнату, остальные подключаются по коду"}</span>
         </button>
       </div>
-      <a href="code.html" class="mode-btn" style="margin-top:20px;text-decoration:none;display:flex">
+      <a href="code.html" class="mode-btn game-link">
         <strong>Игра «Код»</strong>
         <span>Угадайте код — как Wordle: только количество подсказок</span>
       </a>
@@ -103,7 +103,7 @@ function renderHome() {
     countInput.value = state.playerCount;
   });
 
-  app.querySelectorAll(".mode-btn").forEach((btn) => {
+  app.querySelectorAll("button.mode-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       if (btn.disabled) return;
       state.playerCount = clampPlayers(Number(countInput.value));

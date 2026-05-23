@@ -180,6 +180,12 @@ input[type="number"] {
   font-weight: 400;
 }
 
+a.game-link {
+  margin-top: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
 .btn {
   display: block;
   width: 100%;
