@@ -1,11 +1,81 @@
 const app = document.getElementById("app");
 
+const DIGIT_STATE = {
+  NONE: 0,
+  ABSENT: 1,
+  PRESENT: 2,
+  EXACT: 3,
+};
+
+const DIGIT_STATE_LABEL = [
+  "не отмечена",
+  "нет в коде",
+  "есть в коде",
+  "место известно",
+];
+
 const state = {
   screen: "home",
   secret: null,
   guesses: [],
   error: null,
+  digitNotes: createDigitNotes(),
 };
+
+function createDigitNotes() {
+  return Object.fromEntries([...Array(10).keys()].map((d) => [String(d), DIGIT_STATE.NONE]));
+}
+
+function resetDigitNotes() {
+  state.digitNotes = createDigitNotes();
+}
+
+function nextDigitState(current) {
+  return (current + 1) % 4;
+}
+
+function digitKeyClass(stateValue) {
+  switch (stateValue) {
+    case DIGIT_STATE.ABSENT:
+      return "digit-key--absent";
+    case DIGIT_STATE.PRESENT:
+      return "digit-key--present";
+    case DIGIT_STATE.EXACT:
+      return "digit-key--exact";
+    default:
+      return "";
+  }
+}
+
+function renderDigitPad() {
+  const order = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  const buttons = order
+    .map((d) => {
+      const s = state.digitNotes[d] ?? DIGIT_STATE.NONE;
+      const extra = digitKeyClass(s);
+      return `<button type="button" class="digit-key ${extra}" data-digit="${d}" aria-label="Цифра ${d}: ${DIGIT_STATE_LABEL[s]}">${d}</button>`;
+    })
+    .join("");
+
+  return `
+    <div class="card digit-pad-card">
+      <p class="digit-pad-label">Заметки — нажмите цифру, чтобы сменить отметку</p>
+      <div class="digit-pad" role="group" aria-label="Цифры 0–9">${buttons}</div>
+    </div>
+  `;
+}
+
+function bindDigitPad() {
+  app.querySelectorAll(".digit-key").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const d = btn.dataset.digit;
+      const next = nextDigitState(state.digitNotes[d] ?? DIGIT_STATE.NONE);
+      state.digitNotes[d] = next;
+      btn.className = `digit-key ${digitKeyClass(next)}`.trim();
+      btn.setAttribute("aria-label", `Цифра ${d}: ${DIGIT_STATE_LABEL[next]}`);
+    });
+  });
+}
 
 function escapeHtml(str) {
   const div = document.createElement("div");
@@ -170,6 +240,7 @@ function renderPass() {
   document.getElementById("start-guess").addEventListener("click", () => {
     state.screen = "guess";
     state.error = null;
+    resetDigitNotes();
     render();
   });
   document.querySelector("[data-back]").addEventListener("click", () => {
@@ -210,6 +281,7 @@ function renderGuess() {
         <p class="tagline">Игрок 2</p>
       </div>
       ${renderGuessHistory()}
+      ${renderDigitPad()}
       <div class="card">
         <label for="guess-code">Ваша догадка</label>
         <input type="text" id="guess-code" class="code-input" inputmode="numeric" maxlength="4" placeholder="0000" autocomplete="off" />
@@ -220,6 +292,7 @@ function renderGuess() {
   `;
 
   document.querySelector("[data-quit]").addEventListener("click", goHome);
+  bindDigitPad();
   const input = document.getElementById("guess-code");
   bindCodeInput(input);
   document.getElementById("submit-guess").addEventListener("click", () => submitGuess(input));
@@ -261,14 +334,17 @@ function renderWon() {
         <p class="hint">Попыток: ${attempts}</p>
       </div>
       ${renderGuessHistory()}
+      ${renderDigitPad()}
       <button type="button" class="btn" id="play-again">Новая игра</button>
       <button type="button" class="btn btn-secondary" data-home>На главную</button>
     </section>
   `;
 
+  bindDigitPad();
   document.getElementById("play-again").addEventListener("click", () => {
     state.secret = null;
     state.guesses = [];
+    resetDigitNotes();
     state.screen = "set-code";
     render();
   });
@@ -291,6 +367,7 @@ function goHome() {
   state.secret = null;
   state.guesses = [];
   state.error = null;
+  resetDigitNotes();
   render();
 }
 

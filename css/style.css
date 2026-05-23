@@ -482,3 +482,66 @@ a.back-link {
   color: var(--warn);
   background: var(--warn-bg);
 }
+
+.digit-pad-card {
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.digit-pad-label {
+  margin: 0 0 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+}
+
+.digit-pad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.digit-key {
+  aspect-ratio: 1;
+  min-height: 48px;
+  padding: 0;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.digit-key:hover {
+  border-color: var(--accent);
+}
+
+.digit-key:active {
+  transform: scale(0.94);
+}
+
+.digit-key--absent {
+  color: var(--muted);
+  background: #1e2836;
+  border-color: #2a3545;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.digit-key--present {
+  color: #1a1608;
+  background: var(--warn);
+  border-color: #d4ad3a;
+}
+
+.digit-key--exact {
+  color: #0d1f16;
+  background: var(--success);
+  border-color: #3db87a;
+}
