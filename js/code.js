@@ -197,16 +197,6 @@ function renderGuessHistory() {
     <div class="card guess-history-card">
       <p class="status-bar" style="margin:0 0 12px">Попытки</p>
       <ul class="guess-history">${rows}</ul>
-      <div class="guess-legend">
-        <p class="legend-row">
-          <span class="feedback-pill feedback-green">3</span>
-          <span>— столько цифр <strong class="inline-green">на своём месте</strong></span>
-        </p>
-        <p class="legend-row">
-          <span class="feedback-pill feedback-yellow">1</span>
-          <span>— столько цифр <strong class="inline-yellow">в коде, но не там</strong></span>
-        </p>
-      </div>
     </div>
   `;
 }

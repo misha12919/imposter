@@ -476,32 +476,3 @@ a.back-link {
   color: var(--warn);
   background: var(--warn-bg);
 }
-
-.guess-legend {
-  margin: 12px 0 0;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.legend-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 8px;
-  text-align: left;
-}
-
-.legend-row:last-child {
-  margin-bottom: 0;
-}
-
-.legend-row .feedback-pill {
-  flex-shrink: 0;
-  min-width: 32px;
-  height: 32px;
-  font-size: 0.95rem;
-}
-
-.legend-row strong {
-  font-weight: 700;
-}
