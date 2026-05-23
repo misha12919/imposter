@@ -255,11 +255,12 @@ function renderWon() {
   const attempts = state.guesses.length;
   app.innerHTML = `
     <section class="screen">
-      <div class="reveal-zone">
+      <div class="reveal-zone reveal-zone--compact">
         <p class="word-display" style="color:var(--success)">Угадано!</p>
         <p class="room-code" style="font-size:2rem;margin:16px 0">${escapeHtml(state.secret)}</p>
         <p class="hint">Попыток: ${attempts}</p>
       </div>
+      ${renderGuessHistory()}
       <button type="button" class="btn" id="play-again">Новая игра</button>
       <button type="button" class="btn btn-secondary" data-home>На главную</button>
     </section>

@@ -266,6 +266,12 @@ a.game-link {
   min-height: 280px;
 }
 
+.reveal-zone--compact {
+  flex: none;
+  min-height: auto;
+  padding: 16px 0 8px;
+}
+
 .player-badge {
   display: inline-block;
   padding: 8px 16px;
